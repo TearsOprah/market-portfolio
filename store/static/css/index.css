@@ -10,14 +10,15 @@ body {
 #start-purchase-btn {
     background-color: #45913b;
     border-color: #234e25;
-    color: white;
+    color: rgb(220, 231, 216);
 }
 
 #start-purchase-link {
     text-decoration: none;
-    color: white;
+    color: rgb(220, 231, 216);
 }
 
 p { color: rgb(220, 231, 216); font-size: 20pt;}
 
 h1 { color: rgb(220, 231, 216); font-size: 40pt;}
+
