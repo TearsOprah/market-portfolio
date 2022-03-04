@@ -3,6 +3,7 @@ from django.urls import reverse
 from django.contrib import auth, messages
 from users.forms import UserLoginForm, UserRegistrationForm, UserProfileForm
 from products.models import Basket
+from django.contrib.auth.decorators import login_required
 
 
 def login(request):
@@ -34,6 +35,7 @@ def register(request):
     return render(request, 'users/register.html', context)
 
 
+@login_required
 def profile(request):
     user = request.user
     if request.method == 'POST':
@@ -50,7 +52,7 @@ def profile(request):
     for basket in baskets:
         total_quantity += basket.quantity
         total_sum += basket.sum()
-        
+
     context = {
         'form': form, 'title': 'Личный кабинет', 
         'baskets': baskets,
