@@ -2,6 +2,8 @@ from distutils.command.upload import upload
 from tabnanny import verbose
 from django.db import models
 
+from users.models import User
+
 
 class ProductCategory(models.Model):
     name = models.CharField(max_length=64, unique=True)
@@ -24,4 +26,14 @@ class Product(models.Model):
 
     def __str__(self):
         return f'{self.name} | {self.caregory}'
+
+
+class Basket(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=0)
+    created_timestamp = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f'Корзина для {self.user.username} | Товар {self.product.name}'
     
